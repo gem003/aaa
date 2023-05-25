@@ -1,0 +1,15 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "userName": "quanh",
+            "password": "12345",
+            "firtName": "Lê ",
+            "lastName": "Quang Anh",
+            "email": "anhlqph21709@fpt.edu.vn",
+            "gender": "Male",
+            "createDate": "25/05/2023",
+            "updateDate": "25/05/2023"
+        }
+    ]
+}
