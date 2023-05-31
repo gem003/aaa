@@ -12,7 +12,7 @@ const SignInScreen = (props) => {
     // Function to fetch data from the API
     async function fetchData() {
         try {
-            const response = await fetch(' http://192.168.74.188:3000/users');
+            const response = await fetch('http://192.168.137.89:3000/users');
             const data = await response.json();
             return data;
         } catch (error) {
@@ -52,7 +52,7 @@ const SignInScreen = (props) => {
                 Alert.alert('Notification', 'Cant find user infomation', [{ text: 'Cancel', onPress: () => log.error('Cant find user ' + request.username) }]);
             } else {
                 if (!(authInfo.password === request.password)) {
-                    Alert.alert('Notification', 'Password is not correct', [{ text: 'Cancel', onPress: () => log.error('Password is not correct for ' + request.username) }]);
+                    Alert.alert('Notification', 'Password is not correct', [{ text: 'Cancel', onPress: () => log.error('Password sai ' + request.username) }]);
                 } else {
                     Alert.alert('Notification', 'Login successfull ' + request.username, [
                         { text: 'OK', onPress: () => navigateToHome() },

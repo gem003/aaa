@@ -11,5 +11,61 @@
             "createDate": "25/05/2023",
             "updateDate": "25/05/2023"
         }
+    ],
+    "student":[
+        {
+            "studentID":"PH11111",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11111@fpt.edu.vn",
+            "gender":"Male",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        },
+        {
+            "studentID":"PH11112",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11112@fpt.edu.vn",
+            "gender":"Male",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        },
+        {
+            "studentID":"PH11113",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11113@fpt.edu.vn",
+            "gender":"Male",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        },
+        {
+            "studentID":"PH11114",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11114@fpt.edu.vn",
+            "gender":"Memale",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        },
+        {
+            "studentID":"PH11115",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11115@fpt.edu.vn",
+            "gender":"Female",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        },
+        {
+            "studentID":"PH11116",
+            "fullname":"Le Quang Anh",
+            "email":"anhlqph11116@fpt.edu.vn",
+            "gender":"Male",
+            "dateOfBirth": "29/02/2003",
+            "createDate": "30/05/2023",
+            "updateDate": "30/05/2023"
+        }
     ]
 }
