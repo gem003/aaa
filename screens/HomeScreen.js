@@ -1,31 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, Button, View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import log from '../log';
+import { SafeAreaView, Button, View, Text, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import log from '../Log';
 import Student from '../components/Student';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
+    const navigation = useNavigation();
     const [students, setStudents] = useState([]);
+    const [authInfo, setAuthInfo] = useState();
+
     const navigateToLogin = () => {
         navigation.navigate('Login');
     };
-    async function getListStudent() {
+    const retrieveData = async () => {
         try {
-            const API_URL = 'http://192.168.137.89:3000/student';
+            const authInfo = await AsyncStorage.getItem('authInfo');
+            if (authInfo !== null) {
+                log.info('====> authInfo from AsyncStorage', authInfo);
+                setAuthInfo(JSON.parse(authInfo));
+            }
+        } catch (error) {
+            log.error(error);
+        }
+    };
+    const doLogout = () => {
+        AsyncStorage.removeItem('authInfo');
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Login' }]
+        });
+    };
+    const getListStudent = async () => {
+        try {
+            const API_URL = 'http://localhost:3000/students';
             const response = await fetch(API_URL);
             const data = await response.json();
             setStudents(data);
             log.info('====> students:', JSON.stringify(data));
+            setStudents(data);
         } catch (error) {
             log.error('Fetch data failed ' + error);
         }
-    }
+    };
     useEffect(() => {
-        console.log('useEffect has been called!');
+        retrieveData();
         getListStudent();
-    }, []);return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollView}>
-                <Button title='Go to Login Screen' onPress={navigateToLogin} />
+    }, []);
+    const renderStudents = () => {
+        return (
+            <ScrollView contentContainerStyle={styles.scrollView}>
                 <View>
                     <Text style={styles.txtHeader}>List Student</Text>
                 </View>
@@ -35,6 +59,12 @@ const HomeScreen = ({ navigation }) => {
                     })}
                 </View>
             </ScrollView>
+        );
+    };
+    return (
+        <SafeAreaView style={styles.container}>
+            {authInfo ? <Button title='Logout' onPress={doLogout} /> : <Button title='Go to Login Screen' onPress={navigateToLogin} />}
+            {authInfo?.role === 'ADMIN' ? renderStudents() : null}
         </SafeAreaView>
     );
 };
